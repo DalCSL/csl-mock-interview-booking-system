@@ -6,6 +6,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import pool from './db/pool.js';
+import studentRoutes from './routes/student.js';
 
 const app = express();
 
@@ -32,19 +33,8 @@ app.get('/health', async (req, res) => {
   }
 });
 
-// Test route - list all tables
-app.get('/tables', async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT table_name 
-      FROM information_schema.tables 
-      WHERE table_schema = 'public'
-    `);
-    res.json({ tables: result.rows.map(r => r.table_name) });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Routes
+app.use('/student', studentRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
