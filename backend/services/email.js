@@ -1,4 +1,4 @@
-const sendVerifictionCode = async (email, code) => {
+export const sendVerificationCode = async (email, code) => {
     console.log('==========================================');
     console.log(`EMAIL TO: ${email}`);
     console.log(`VERIFICATION CODE: ${code}`);
@@ -8,5 +8,3 @@ const sendVerifictionCode = async (email, code) => {
     
     return true;
 };
-
-export default sendVerifictionCode;

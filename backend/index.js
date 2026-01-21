@@ -7,6 +7,8 @@ import helmet from 'helmet';
 
 import pool from './db/pool.js';
 import studentRoutes from './routes/student.js';
+import authRoutes from './routes/auth.js';
+import slotsRoutes from './routes/slots.js';
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.get('/health', async (req, res) => {
 
 // Routes
 app.use('/student', studentRoutes);
+app.use('/auth', authRoutes);
+app.use('/slots', slotsRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
