@@ -6,7 +6,7 @@ const router = Router();
 
 // Public routes (no auth needed)
 router.post('/request-code', requestCode);
-router.post('/verify-coe', verifyCode);
+router.post('/verify-code', verifyCode);
 
 // Protected routes (need vali student token);
 router.get('/me', verifyStudentToken, getMe);
